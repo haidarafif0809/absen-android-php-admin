@@ -13,7 +13,8 @@ $data_lokasi = mysqli_fetch_array($query_lokasi);
 array_push($result,array(
 	 "latitude"=>$data_lokasi['latitude_absen'],
 	 "longitude"=>$data_lokasi['longitude_absen'],
-	 "nama" => $data_lokasi['nama']
+	 "nama" => $data_lokasi['nama'],
+	 "batas_jarak_absen" => $data_lokasi['batas_jarak_absen']
 	 ));
  
 	 //displaying in json format 

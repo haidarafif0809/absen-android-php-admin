@@ -9,9 +9,10 @@ include 'android/db.php';
 	
 		<form class="form-inline">
 
-		<div class="form-group">
+		<div class="form-group ">
 		   
-		   <select class="form-control" name="nik">
+		   <select class="form-control" name="nik" id="nik" required="">
+		   <option value="">-- pilih karyawan --</option>
 		   	<?php 
 		   		$query_user = $db->query("SELECT * FROM daftar_karyawan ");
 		   		while ($data_user = $query_user->fetch_array()) {
@@ -23,29 +24,27 @@ include 'android/db.php';
 		   	 ?>
 		   </select>
 		  
-		  </div>
-		  <div class="form-group">
-		   
-		   <input type="text" class="form-control datepicker" id="dari_tanggal" name="dari_tanggal" placeholder="Dari Tanggal">
-		  
-		  </div>
-		  <div class="form-group">
-
-		    <input type="text" class="form-control datepicker" id="pwd" name="sampai_tanggal" placeholder="Sampai Tanggal">
-		  </div>
-
+		  </div> 
 		
+			<div class="form-group ">
+				 <input type="text" class="form-control datepicker" id="dari_tanggal" name="dari_tanggal" placeholder="Dari Tanggal" required="">
+			</div>
+			<div class="form-group ">
+			    <input type="text" class="form-control datepicker" id="pwd" name="sampai_tanggal" placeholder="Sampai Tanggal" required="">
+		</div>
 
-		  <div class="checkbox">
-  <label><input type="checkbox" value="1" name="tampil_foto">Tampil Foto</label>
-</div>
-	  <div class="checkbox">
-  <label><input type="checkbox" value="1" name="tampil_lokasi">Tampil Lokasi</label>
-</div>
+		  <!-- / end row tanggal -->
+		<div class="checkbox">
+		  <label><input type="checkbox" value="1" name="tampil_foto">Tampil Foto</label>
+		</div>
+		<div class="checkbox">
+		  <label><input type="checkbox" value="1" name="tampil_lokasi">Tampil Lokasi</label>
+		</div>
 
 	  <button type="submit" class="btn btn-default">Cari</button>
 	</form>
 	<br>
+
 <div class="table-responsive">
 	<table class="table table-bordered datatable">
 		
@@ -111,5 +110,13 @@ include 'android/db.php';
 	 	<?php endif ?>
 
 </div>
+
+<script type="text/javascript">
+	$("#nik").selectize({
+placeholder: "-- pilih karyawan --",
+    sortField: 'text'
+});
+
+</script>
 
  <?php include 'footer.php'; ?>

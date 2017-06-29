@@ -18,10 +18,11 @@
 
 	  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css
 ">
+<link rel="stylesheet" type="text/css" href="css/selectize.default.css">
 	  
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-
+    <script src="js/selectize.js"></script>
   <script>
   $( function() {
     $( ".datepicker" ).datepicker();

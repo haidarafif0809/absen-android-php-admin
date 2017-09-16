@@ -9,7 +9,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 $nik = $_POST['nik'];
 $password = $_POST['password'];
-$keterangan = $_POST['keterangan'];
+if (isset($_POST['keterangan'])) {
+	$keterangan = $_POST['keterangan'];
+}
+else {
+	$keterangan = "";
+}
 $lokasi = $_POST['lokasi'];
 $latitude = $_POST['latitude'];
 $longitude = $_POST['longitude'];

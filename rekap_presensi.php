@@ -51,7 +51,9 @@ include 'android/db.php';
 	<thead>
 		<th>NIK</th>
 		<th>Waktu Masuk</th>
+		<th>Keterangan Masuk</th>
 		<th>Waktu Pulang</th>
+		<th>Keterangan Pulang</th>
 		<?php if (isset($_GET['tampil_lokasi'])): ?>
 			<th>Lokasi Masuk</th>
 		<th>Lokasi Pulang</th>	
@@ -81,7 +83,10 @@ include 'android/db.php';
 			echo "<tr>
 			<td>".$nik."</td>
 			<td>".$data_presensi['waktu_masuk']."</td>
-			<td>".$data_presensi['waktu_pulang']."</td>";
+			<td>".$data_presensi['keterangan_masuk']."</td>
+		
+			<td>".$data_presensi['waktu_pulang']."</td>
+				<td>".$data_presensi['keterangan_pulang']."</td>";
 			if (isset($_GET['tampil_lokasi'])) {
 			
 	echo "<td>".$data_presensi['lokasi_absen_masuk']."</td>

@@ -9,6 +9,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 $nik = $_POST['nik'];
 $password = $_POST['password'];
+$keterangan = $_POST['keterangan'];
 $lokasi = $_POST['lokasi'];
 $latitude = $_POST['latitude'];
 $longitude = $_POST['longitude'];
@@ -55,13 +56,13 @@ else {
 				
 	//berhasil melakukan absen			
 	
-	$db->query(" INSERT INTO  presensi (nik,jam_masuk,tanggal_masuk,waktu_masuk,lokasi_absen_masuk,latitude_masuk,longitude_masuk,gambar) values
-('$nik','$jam_sekarang','$tanggal_sekarang','$waktu_sekarang','$lokasi','$latitude','$longitude','$path')");
+	$db->query(" INSERT INTO  presensi (nik,jam_masuk,tanggal_masuk,waktu_masuk,lokasi_absen_masuk,latitude_masuk,longitude_masuk,gambar,keterangan_masuk) values
+('$nik','$jam_sekarang','$tanggal_sekarang','$waktu_sekarang','$lokasi','$latitude','$longitude','$path','$keterangan')");
 
 	// upload foto
 	 file_put_contents($path,base64_decode($image));
 	
-	$db->query("UPDATE daftar_karyawan SET status='masuk' WHERE nik='$nik'");
+	$db->query("UPDATE daftar_karyawan SET `daftar_karyawan`.`status` ='masuk' WHERE nik='$nik'");
 
 		$response["value"] = 1;
        $response["message"] = "Berhasil Absen Masuk";

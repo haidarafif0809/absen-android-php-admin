@@ -6,8 +6,8 @@ $jam_sekarang = date('H:i:s');
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
 $nik = $_POST['nik'];
-
 $password = $_POST['password'];
+$keterangan = $_POST['keterangan'];
 $lokasi = $_POST['lokasi'];
 
 $tanggal_sekarang = date('Y-m-d');
@@ -49,7 +49,7 @@ elseif ($jumlah_absen_masuk == 0) {
 else {
 				
 //berhasil absen pulang
-	$sql = " UPDATE presensi SET jam_pulang= '$jam_sekarang',tanggal_pulang= '$tanggal_sekarang',waktu_pulang= '$waktu_sekarang',jam_kerja = timediff('$waktu_sekarang',waktu_masuk),lokasi_absen_pulang = '$lokasi',gambar_pulang = '$path', latitude_pulang = '$latitude' ,longitude_pulang = '$longitude'  where nik='$nik' and jam_pulang IS NULL"; 
+	$sql = " UPDATE presensi SET jam_pulang= '$jam_sekarang',tanggal_pulang= '$tanggal_sekarang',waktu_pulang= '$waktu_sekarang',jam_kerja = timediff('$waktu_sekarang',waktu_masuk),lokasi_absen_pulang = '$lokasi',gambar_pulang = '$path', latitude_pulang = '$latitude' ,longitude_pulang = '$longitude' , keterangan_pulang = '$keterangan' where nik='$nik' and jam_pulang IS NULL"; 
 if ($db->query($sql) === TRUE) {
 		 file_put_contents($path,base64_decode($image));
 			} else {
@@ -57,7 +57,7 @@ if ($db->query($sql) === TRUE) {
 			}
 		// upload foto
 					
-		$db->query("UPDATE daftar_karyawan SET status='pulang' WHERE nik='$nik'");	
+		$db->query("UPDATE daftar_karyawan SET `daftar_karyawan`.`status` ='pulang' WHERE nik='$nik'");	
 	   $response["value"] = 1;
        $response["message"] = "Berhasil Absen Pulang";
        echo json_encode($response);
